@@ -11,7 +11,7 @@ const Sidebar = () => {
   const isMenuOpen = useSelector((store) => store.app.isMenuOpen);
   if (!isMenuOpen)
     return (
-      <aside className="w-20 h-screen bg-white shadow-md p-4 flex flex-col gap-6">
+      <aside className="w-20 h-screen bg-white  p-4 flex flex-col gap-6">
         <ul className="flex flex-col gap-4">
           <li className="flex items-center gap-3 p-2 rounded-lg hover:bg-gray-100 cursor-pointer">
             <AiFillHome size={24} />
@@ -43,25 +43,25 @@ const Sidebar = () => {
       </aside>
     );
   return (
-    <aside className="w-60 h-screen bg-white shadow-md p-4 flex flex-col gap-6">
+    <aside className="w-60 h-screen bg-white  p-4 flex flex-col gap-6">
       <ul className="flex flex-col gap-4">
-        <li className="flex items-center gap-3 p-2 rounded-lg hover:bg-gray-100 cursor-pointer">
+        <li className="flex items-center gap-3 p-1   rounded-lg hover:bg-gray-100 cursor-pointer">
           <AiFillHome size={24} />
           <span>Home</span>
         </li>
-        <li className="flex items-center gap-3 p-2 rounded-lg hover:bg-gray-100 cursor-pointer">
+        <li className="flex items-center gap-3 p-1 rounded-lg hover:bg-gray-100 cursor-pointer">
           <AiOutlineYoutube size={24} />
           <span>Shorts</span>
         </li>
-        <li className="flex items-center gap-3 p-2 rounded-lg hover:bg-gray-100 cursor-pointer">
+        <li className="flex items-center gap-3 p-1 rounded-lg hover:bg-gray-100 cursor-pointer">
           <MdOutlineSubscriptions size={24} />
           <span>Subscriptions</span>
         </li>
         
       </ul>
 
-      <div className="flex flex-col gap-2 mt-6">
-        <h2 className="uppercase text-sm font-bold">Explore</h2>
+      <div className="flex flex-col gap-2 ">
+        <h2 className="uppercase text-xl font-semibold p-2 ">Explore</h2>
         <ul className="flex flex-col gap-3">
           <li className="flex items-center gap-3 p-2 rounded-lg hover:bg-gray-100 cursor-pointer">
             <FaMusic size={20} className="text-red-500" />
