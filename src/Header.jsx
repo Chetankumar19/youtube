@@ -14,7 +14,7 @@ const Header = () => {
   };
 
   return (
-    <header className="flex items-center justify-between px-4 md:px-6 shadow-md sticky top-0 bg-white">
+    <header className="flex items-center justify-between px-4 md:px-6 sticky top-0 bg-white">
       {/* Left Section */}
       <div className="flex items-center gap-4">
         <button
@@ -63,7 +63,6 @@ const Header = () => {
 
       {!mobileSearchActive && (
         <div className="flex items-center gap-3 md:gap-5">
-          {/* Mobile Search Button */}
           <button
             className="p-2 rounded-full hover:bg-gray-100 flex items-center md:hidden"
             onClick={() => setMobileSearchActive(true)}

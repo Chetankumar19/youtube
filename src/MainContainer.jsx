@@ -2,13 +2,15 @@ import React from 'react'
 import ButtonList from './ButtonList'
 import VideoContainer from './VideoContainer'
 
-const Maincontainer = () => {
+const MainContainer = () => {
   return (
-    <div>
-        <ButtonList/>
+    <div className='mx-3 my-3'>
+      
+         <ButtonList />
+      
         <VideoContainer/>
     </div>
   )
 }
 
-export default Maincontainer
+export default MainContainer;
