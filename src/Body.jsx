@@ -1,3 +1,4 @@
+import { Outlet } from 'react-router-dom';
 import MainContainer from './MainContainer'
 import Sidebar from './Sidebar'
 
@@ -7,7 +8,7 @@ const Body = () => {
     <div>
       <div className='flex'>
         <Sidebar />
-        <MainContainer />
+        <Outlet/>
       </div>
 
     </div>
