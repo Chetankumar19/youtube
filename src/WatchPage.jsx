@@ -1,12 +1,31 @@
-import React from 'react'
+import React, { useEffect } from 'react'
+import { useDispatch } from 'react-redux';
+import { closeMenu } from './utils/appSlice';
+import { useSearchParams } from "react-router";
 
 const WatchPage = () => {
-    return (
-        <div>
-           
+  const [searchParam] = useSearchParams();
+  const dispatch = useDispatch();
 
-        </div>
-    )
-}
+  useEffect(() => {
+    dispatch(closeMenu());
+  }, [searchParam, dispatch]);
+
+  return (
+    <div className="flex justify-center p-4">
+      {/* Mobile/tablet → full width & aspect ratio 
+          Laptop/desktop → fixed 900x500 */}
+      <div className="w-full aspect-video sm:w-[900px] sm:h-[500px]">
+        <iframe
+          src={`https://www.youtube.com/embed/${searchParam.get('v')}`}
+          title="YouTube video player"
+          className="w-full h-full rounded-lg"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+          allowFullScreen
+        ></iframe>
+      </div>
+    </div>
+  );
+};
 
 export default WatchPage;

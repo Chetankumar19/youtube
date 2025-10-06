@@ -6,49 +6,19 @@ import { GiGamepad } from "react-icons/gi";
 import { MdOutlineArticle } from "react-icons/md";
 import { IoMdFootball } from "react-icons/io";
 import { useSelector } from "react-redux";
+import { Link } from "react-router-dom";
 
 const Sidebar = () => {
   const isMenuOpen = useSelector((store) => store.app.isMenuOpen);
-  if (!isMenuOpen)
-    return (
-      <aside className="w-20 h-screen bg-white  p-4 flex flex-col gap-6">
-        <ul className="flex flex-col gap-4">
-          <li className="flex items-center gap-3 p-2 rounded-lg hover:bg-gray-100 cursor-pointer">
-            <AiFillHome size={24} />
-          </li>
-          <li className="flex items-center gap-3 p-2 rounded-lg hover:bg-gray-100 cursor-pointer">
-            <AiOutlineYoutube size={24} />
-          </li>
-          <li className="flex items-center gap-3 p-2 rounded-lg hover:bg-gray-100 cursor-pointer">
-            <MdOutlineSubscriptions size={24} />
-          </li>
-          <li className="flex items-center gap-3 p-2 rounded-lg hover:bg-gray-100 cursor-pointer">
-            <FaMusic size={20} className="text-red-500" />
-            
-          </li>
-          <li className="flex items-center gap-3 p-2 rounded-lg hover:bg-gray-100 cursor-pointer">
-            <GiGamepad size={20} className="text-green-500" />
-           
-          </li>
-          <li className="flex items-center gap-3 p-2 rounded-lg hover:bg-gray-100 cursor-pointer">
-            <MdOutlineArticle size={20} className="text-blue-500" />
-            
-          </li>
-          <li className="flex items-center gap-3 p-2 rounded-lg hover:bg-gray-100 cursor-pointer">
-            <IoMdFootball size={20} className="text-yellow-500" />
-           
-          </li>
-        </ul>
-
-      </aside>
-    );
+  if (isMenuOpen)
+    
   return (
     <aside className="w-60 h-screen bg-white  p-4 flex flex-col gap-6">
       <ul className="flex flex-col gap-4">
-        <li className="flex items-center gap-3 p-1   rounded-lg hover:bg-gray-100 cursor-pointer">
+        <Link to="/" className="flex items-center gap-3 p-1   rounded-lg hover:bg-gray-100 cursor-pointer">
           <AiFillHome size={24} />
           <span>Home</span>
-        </li>
+        </Link>
         <li className="flex items-center gap-3 p-1 rounded-lg hover:bg-gray-100 cursor-pointer">
           <AiOutlineYoutube size={24} />
           <span>Shorts</span>
