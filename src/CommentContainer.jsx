@@ -56,13 +56,7 @@ const Comment = ({ data }) => {
     </div>
   );
 };
-const DemoComment = ( ) => {
-  
-  return (
-    <div></div>
-   
-  );
-};
+
 const CommentList = ({ comments }) => {
   return (
     <div className="my-3 space-y-3">
