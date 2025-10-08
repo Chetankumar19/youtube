@@ -44,7 +44,7 @@ const commentsData = [
 ];
 
 const Comment = ({ data }) => {
-  const { name, text, replies } = data;
+  const { name, text } = data;
 
   return (
     <div className="flex p-3 bg-gray-100 rounded-lg transition-all duration-200">
