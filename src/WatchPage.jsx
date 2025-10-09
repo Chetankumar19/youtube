@@ -3,6 +3,7 @@ import { useDispatch } from "react-redux";
 import { closeMenu } from "./utils/appSlice";
 import { useSearchParams } from "react-router";
 import CommentContainer from "./commentContainer";
+import LiveChat from "./LiveChat";
 
 const WatchPage = () => {
   const [searchParam] = useSearchParams();
@@ -13,21 +14,25 @@ const WatchPage = () => {
   }, [searchParam, dispatch]);
 
   return (
-      <div className="flex flex-col px-6 py-6">
-        <div className="w-full aspect-video sm:w-[900px] sm:h-[500px]">
-          <iframe
-            src={`https://www.youtube.com/embed/${searchParam.get("v")}`}
-            title="YouTube video player"
-            className="w-full h-full rounded-lg"
-            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-            allowFullScreen
-          ></iframe>
-        </div>
-        <div>
-          < CommentContainer/>
-        </div>
+    <div className="grid grid-cols-1 lg:grid-cols-3 gap-4 px-6 py-6">
+      <div className="lg:col-span-2 w-full aspect-video rounded-xl shadow-lg overflow-hidden">
+        <iframe
+          src={`https://www.youtube.com/embed/${searchParam.get("v")}`}
+          title="YouTube video player"
+          className="w-full h-full rounded-xl"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+          allowFullScreen
+        ></iframe>
       </div>
-    
+
+      <div className="lg:col-span-1 h-[70vh] rounded-xl shadow-lg overflow-hidden">
+        <LiveChat />
+      </div>
+
+      <div className="lg:col-span-2 rounded-xl p-4 bg-white">
+        <CommentContainer />
+      </div>
+    </div>
   );
 };
 

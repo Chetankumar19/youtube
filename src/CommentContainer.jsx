@@ -47,8 +47,8 @@ const Comment = ({ data }) => {
   const { name, text } = data;
 
   return (
-    <div className="flex p-3 bg-gray-100 rounded-lg transition-all duration-200">
-      <FaCircleUser size={40} className="text-b-500 mt-1 mr-3" />
+    <div className="flex p-3 bg-gray-50 rounded-lg transition-all duration-200">
+      <FaCircleUser size={40} className=" mt-1 mr-3" />
       <div className="flex flex-col">
         <p className="font-bold ">{name}</p>
         <p className=" leading-snug">{text}</p>
