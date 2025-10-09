@@ -2,7 +2,7 @@ import React, { useEffect } from "react";
 import { useDispatch } from "react-redux";
 import { closeMenu } from "./utils/appSlice";
 import { useSearchParams } from "react-router";
-import CommentContainer from "./commentContainer";
+import CommentContainer from "./CommentContainer";
 import LiveChat from "./LiveChat";
 
 const WatchPage = () => {
