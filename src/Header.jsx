@@ -7,12 +7,15 @@ import { useDispatch, useSelector } from "react-redux";
 import { toggleMenu } from "./utils/appSlice";
 import { GOOGLE_API_KEY } from "./utils/constant";
 import { cacheResults } from "./utils/searchSlice";
+import Region from "./Region";
+import Profile from "./Profile";
 
 const Header = () => {
   const dispatch = useDispatch();
   const [searchQuery, setSearchQuery] = useState("");
   const [suggestions, setSuggestions] = useState([]);
   const [showSuggestions, setShowSuggestions] = useState(false);
+  const [isProfileVisible, setIsProfileVisible] = useState(false);
 
   const searchCache = useSelector((store) => store.search);
 
@@ -48,7 +51,7 @@ const Header = () => {
         videoId: item.id.videoId,
         title: item.snippet.title,
       }));
-      console.log("suggestion");
+
       setSuggestions(results);
       dispatch(
         cacheResults({
@@ -69,7 +72,6 @@ const Header = () => {
         >
           <RxHamburgerMenu size={24} />
         </button>
-
         <img
           src={youtubeLogo}
           alt="YouTube Logo"
@@ -110,10 +112,21 @@ const Header = () => {
         )}
       </div>
 
-      <div className="flex items-center gap-3">
-        <button className="p-2 rounded-full hover:bg-gray-100 flex items-center">
+      <div className="relative flex items-center">
+        <button
+          className="bg-blue-200 rounded-full flex items-center cursor-pointer p-1"
+          onClick={() => setIsProfileVisible(!isProfileVisible)}
+        >
           <FaCircleUser size={28} />
+          {isProfileVisible && (
+            <div className="p-2 mx-2 font-semibold text-blue-900">Guest</div>
+          )}
         </button>
+        {isProfileVisible && (
+          <div className="w-fit absolute top-full right-2 z-50 bg-white shadow">
+            <Profile />
+          </div>
+        )}
       </div>
     </header>
   );

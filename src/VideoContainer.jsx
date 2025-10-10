@@ -1,17 +1,20 @@
 import React, { useEffect, useState } from 'react'
-import { YOUTUBE_VIDEOS_API } from './utils/constant';
+import { GOOGLE_API_KEY, YOUTUBE_VIDEOS_API } from './utils/constant';
 import VideoCard from './VideoCard';
 import { Link } from 'react-router-dom';
+import { useSelector } from 'react-redux';
 
 const VideoContainer = () => {
   const [videos, setVideos] = useState([]);
-
+  const regionValue = useSelector(state => state.region)
+  console.log(regionValue.region)
   useEffect(() => {
+    console.log("page render")
     getVideos();
-  }, []);
+  }, [regionValue]);
 
   const getVideos = async () => {
-    const data = await fetch(YOUTUBE_VIDEOS_API);
+    const data = await fetch(YOUTUBE_VIDEOS_API+regionValue.region+"&key="+GOOGLE_API_KEY);
     const json = await data.json();
     console.log(json.items);
     setVideos(json.items);

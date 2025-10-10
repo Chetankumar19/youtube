@@ -13,7 +13,7 @@ const Sidebar = () => {
   if (isMenuOpen)
     
   return (
-    <aside className="w-60 h-screen bg-white  p-4 flex flex-col gap-6">
+    <aside className="w-60 h-screen bg-white  p-4 flex flex-col gap-6 fixed">
       <ul className="flex flex-col gap-4">
         <Link to="/" className="flex items-center gap-3 p-1   rounded-lg hover:bg-gray-100 cursor-pointer">
           <AiFillHome size={24} />
