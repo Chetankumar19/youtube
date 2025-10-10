@@ -47,11 +47,11 @@ const Comment = ({ data }) => {
   const { name, text } = data;
 
   return (
-    <div className="flex p-3 bg-gray-50 rounded-lg transition-all duration-200">
-      <FaCircleUser size={40} className=" mt-1 mr-3" />
+    <div className="flex p-3 bg-gray-50 rounded-lg transition-all duration-200 w-96 break-words">
+      <FaCircleUser size={40} className="mt-1 mr-3" />
       <div className="flex flex-col">
-        <p className="font-bold ">{name}</p>
-        <p className=" leading-snug">{text}</p>
+        <p className="font-bold">{name}</p>
+        <p className="leading-snug">{text}</p>
       </div>
     </div>
   );
@@ -60,12 +60,14 @@ const Comment = ({ data }) => {
 const CommentList = ({ comments }) => {
   return (
     <div className="my-3 space-y-3">
-      {comments.map((comment) => (
-        <div>
+      {comments.map((comment, idx) => (
+        <div key={idx}>
           <Comment data={comment} />
-          <div className="pl-10 border-l border-l-black ml-5">
-            <CommentList comments={comment.replies}/>
-          </div>
+          {comment.replies.length > 0 && (
+            <div className="pl-10 border-l border-l-black ml-5">
+              <CommentList comments={comment.replies} />
+            </div>
+          )}
         </div>
       ))}
     </div>
