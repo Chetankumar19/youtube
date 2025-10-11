@@ -4,6 +4,7 @@ import { closeMenu } from "./utils/appSlice";
 import { useSearchParams } from "react-router";
 import CommentContainer from "./CommentContainer";
 import LiveChat from "./LiveChat";
+import VideoSuggest from "../VideoSuggest";
 
 const WatchPage = () => {
   const [searchParam] = useSearchParams();
@@ -11,7 +12,7 @@ const WatchPage = () => {
 
   useEffect(() => {
     dispatch(closeMenu());
-  }, [searchParam, dispatch]);
+  }, [searchParam]);
 
   return (
     <div className="grid grid-cols-1 lg:grid-cols-3 gap-4 px-6 py-6">
@@ -31,6 +32,9 @@ const WatchPage = () => {
 
       <div className="lg:col-span-2 rounded-xl p-4 bg-white">
         <CommentContainer />
+      </div>
+      <div>
+        <VideoSuggest/>
       </div>
     </div>
   );

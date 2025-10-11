@@ -1,30 +1,36 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect } from 'react';
 import { GOOGLE_API_KEY, YOUTUBE_VIDEOS_API } from './utils/constant';
 import VideoCard from './VideoCard';
 import { Link } from 'react-router-dom';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
+import { addVideo } from './utils/videoSlice';
 
 const VideoContainer = () => {
-  const [videos, setVideos] = useState([]);
-  const regionValue = useSelector(state => state.region)
-  console.log(regionValue.region)
+  const videos = useSelector(state => state.video.videos);
+  const regionValue = useSelector(state => state.region);
+  const dispatch = useDispatch();
+
   useEffect(() => {
-    console.log("page render")
+    if (!regionValue?.region) return;
     getVideos();
   }, [regionValue]);
 
   const getVideos = async () => {
-    const data = await fetch(YOUTUBE_VIDEOS_API+regionValue.region+"&key="+GOOGLE_API_KEY);
-    const json = await data.json();
-    console.log(json.items);
-    setVideos(json.items);
+    try {
+      const res = await fetch(`${YOUTUBE_VIDEOS_API}${regionValue.region}&key=${GOOGLE_API_KEY}`);
+      const json = await res.json();
+      console.log(json.items)
+      if (json?.items) dispatch(addVideo(json.items));
+    } catch (error) {
+      console.error("Failed to fetch videos:", error);
+    }
   };
 
   return (
     <div className="grid grid-cols-1 sm:flex sm:flex-wrap gap-4">
       {videos.map((videoInfo, idx) => (
         <Link to={`/watch?v=${videoInfo.id?.videoId || videoInfo.id}`} key={videoInfo.id?.videoId || idx}>
-          <VideoCard videoInfo={videoInfo} />
+          <VideoCard videoInfo={videoInfo} isSuggest={false} />
         </Link>
       ))}
     </div>
